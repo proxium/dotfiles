@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Define the target directory for Karabiner user settings on macOS
+KARABINER_USER_SETTINGS_DIR="${HOME}/.config/karabiner/"
+
+# Check if Karabiner settings directory exists
+if [ -d "$KARABINER_USER_SETTINGS_DIR" ]; then
+	# Backup existing karabiner.json if it exist
+	cp "${KARABINER_USER_SETTINGS_DIR}/karabiner.json" "${KARABINER_USER_SETTINGS_DIR}/karabiner.json.backup"
+
+	# Copy your custom karabiner.json to the Karabiner settings directory
+	cp "settings/KARABINER-Settings.json" "${KARABINER_USER_SETTINGS_DIR}/karabiner.json"
+
+	echo "Karabiner settings has been updated."
+else
+	echo "Karabiner user settings directory does not exist. Please ensure Karabiner is installed."
+fi

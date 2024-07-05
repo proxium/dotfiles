@@ -1,0 +1,21 @@
+#!/bin/bash
+# stop the script if an error occurs
+set -e
+
+# Check if Do Not Disturb is enabled
+dnd_status=$(defaults -currentHost read com.apple.notificationcenterui doNotDisturb)
+
+# Output the result
+if [ "$dnd_status" == 1 ]; then
+  echo "Do Not Disturb is enabled"
+else
+  echo "Do Not Disturb is disabled"
+fi
+
+# Return the status as an exit code (0 for enabled, 1 for disabled)
+if [ "$dnd_status" == 1 ]; then
+  exit 0
+else
+  exit 1
+fi
+

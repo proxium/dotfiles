@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Path to the check_dnd_status.sh script
+CHECK_DND_SCRIPT="./dndstatus"
+
+# Run the check_dnd_status.sh script
+$CHECK_DND_SCRIPT
+
+# Get the exit status of the check_dnd_status.sh script
+DND_STATUS=$?
+
+# If Do Not Disturb is disabled (exit code 1), enable it
+if [ $DND_STATUS -ne 0 ]; then
+  echo "Enabling Do Not Disturb..."
+  # This script toggles the Do not disturb on mac using keyboard shortcut
+  osascript -e 'tell application "System Events" to keystroke "d" using {control down, option down, command down}'
+  killall NotificationCenter
+  echo "Do Not Disturb has been enabled."
+else
+  echo "Do Not Disturb is already enabled."
+fi
+

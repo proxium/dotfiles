@@ -1,0 +1,38 @@
+# How I installed LazyVim locally on MacOS 10.15.7 Catalina
+brew install neovim
+# Install NerdFonts
+brew tap homebrew/cask-fonts
+brew install --cask homebrew/cask-fonts/font-symbols-only-nerd-font
+# Configure iTerm2 to use NerdFonts
+(#see video 10:37: https://youtu.be/mQdB_kHyZn8?si=SPpMwFnJvNWfUOG9&t=637)
+
+# Install LazyVim https://www.lazyvim.org/installation
+## Backup current Neovim files
+	# required
+	mv ~/.config/nvim{,.bak}
+
+	# optional but recommended
+	mv ~/.local/share/nvim{,.bak}
+	mv ~/.local/state/nvim{,.bak}
+	mv ~/.cache/nvim{,.bak}
+## Clone the starter
+	git clone https://github.com/LazyVim/starter ~/.config/nvim
+## Remove the .git folder, so you can add it to your own repo later
+	rm -rf ~/.config/nvim/.git
+
+# Start Neovim
+nvim
+
+# For more usage tips:
+https://www.youtube.com/watch?v=N93cTbtLCIM
+
+Add new plugin (ex: VimBeGood)
+- touch ~/.config/nvim/lua/plugins/vimbegood.lua
+- add the following:
+return {
+  -- add vim-be-good
+  {
+    "ThePrimeagen/vim-be-good",
+    lazy = false,
+  },
+}

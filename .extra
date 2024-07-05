@@ -1,0 +1,19 @@
+# Change default vagrant home
+export VAGRANT_HOME=/Volumes/LaCie/RATEB_DOC/.VirtualBoxVagrantVMs
+
+# Minikube
+export MINIKUBE_HOME="/Volumes/LaCie/Minikube/"
+
+# Localstack
+export LOCALSTACK_AUTH_TOKEN="ls-quZABEzE-QIQe-QAPO-6986-dOjujeva0448"
+
+# Type 'textw' on the terminal to open TextWrangler
+alias textw='open -a /Applications/TextWrangler.app'
+
+#if [ -f $(brew --prefix)/etc/bash_completion ]
+#then
+#    . $(brew --prefix)/etc/bash_completion
+#fi;
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+

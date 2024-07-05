@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+##pmset
+#https://ss64.com/mac/pmset.html
+
+#The system writes a sleep image to disk and turns off the system, which is a safe state that conserves battery power.
+#sudo pmset -a hibernatemode 25
+
+#Clear any existing scheduling for power events on your Mac
+#sudo pmset schedule cancelall
+#This prevents the system from updating the file (all scheduled system events like sleep, power-on and such)
+#sudo chflags schg /Library/Preferences/SystemConfiguration/com.apple.AutoWake.plist
+
+#Go into sleep after 10 min on charger and 4 min on battery
+#sudo pmset -c sleep 10
+#sudo pmset -b sleep 4
+
+#acwake 0: Disables waking the system when an external power source (AC power) is connected or disconnected.
+#womp 0: Disables Wake on Magic Packet, which prevents the system from waking up in response to a magic packet sent over a network.
+#powernap 0: Disables Power Nap, which prevents the system from waking up periodically to check for updates or perform background tasks.
+#proximitywake 0: Disables proximity wake, which means the system will not wake up when it detects proximity (e.g., when a user is close to the device).
+#tcpkeepalive 1: Enables TCP keep-alive, which can help maintain network connections when the system is idle or sleeping.
+#ttyskeepawake 0: Disables keeping terminal (tty) sessions awake when the system is idle or sleeping. This helps to reduce power usage.
+#sudo pmset -a acwake 0 womp 0 powernap 0 proximitywake 0 tcpkeepalive 1 ttyskeepawake 0

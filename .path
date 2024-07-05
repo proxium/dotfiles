@@ -1,0 +1,19 @@
+export PATH="/usr/local/sbin:$PATH"
+
+# Add `~/bin` to the `$PATH`
+export PATH="$HOME/bin:$HOME/Library/Python/2.7/bin:$PATH";
+
+export HOMEBREW_NO_ANALYTICS=1
+
+#export PATH=/usr/local/Cellar/openssl@1.1/1.1.1k/bin:$PATH
+
+#export PATH=/usr/local/Cellar/llvm/17.0.6_1/bin:$PATH
+
+# Have node@20 first in your PATH
+export PATH="/usr/local/opt/node@20/bin:$PATH"
+
+# Add $HOME/go/bin for commands installed via `go install`
+export PATH="$HOME/go/bin:$PATH"
+
+# Add scripts
+export PATH="$HOME/dotfiles/scripts:$PATH"

@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+# Make vim the default editor.
+export EDITOR='vim'
+
+# Enable persistent REPL history for `node`.
+export NODE_REPL_HISTORY=~/.node_history
+# Allow 32³ entries; the default is 1000.
+export NODE_REPL_HISTORY_SIZE='32768'
+# Use sloppy mode by default, matching web browsers.
+export NODE_REPL_MODE='sloppy'
+
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
+export PYTHONIOENCODING='UTF-8'
+
+# Increase Bash history size. Allow 32³ entries; the default is 500.
+export HISTSIZE='32768'
+export HISTFILESIZE="${HISTSIZE}"
+# Omit duplicates and commands that begin with a space from history.
+export HISTCONTROL='ignoreboth'
+
+# Prefer US English and use UTF-8.
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+
+# Highlight section titles in manual pages.
+export LESS_TERMCAP_md="${yellow}"
+
+# Don’t clear the screen after quitting a manual page.
+export MANPAGER='less -X'
+
+# Avoid issues with `gpg` as installed via Homebrew.
+# https://stackoverflow.com/a/42265848/96656
+export GPG_TTY=$(tty)
+
+# Disable Brew auto-update of all outdated software
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_PREFIX=$(brew --prefix)
+
+# Ensure CMake finds clang from Homebrew
+#export CC=/usr/local/Cellar/llvm/17.0.6_1/bin/clang
+#export CXX=/usr/local/Cellar/llvm/17.0.6_1/bin/clang++
+export CFLAGS="-isysroot $(xcrun -show-sdk-path) ${CFLAGS}"
+export CXXFLAGS="-isysroot $(xcrun -show-sdk-path) ${CXXFLAGS}"
+#export LDFLAGS="-L$(xcrun -show-sdk-path)/usr/lib ${LDFLAGS} -L/usr/local/opt/node@20/lib"
+export CPPFLAGS="-I/usr/local/opt/node@20/include"
+
+# Existing LDFLAGS setup
+export LDFLAGS="-L$(xcrun -show-sdk-path)/usr/lib ${LDFLAGS} -L/usr/local/opt/node@20/lib"
+
+# Adding the new LLVM-related flags to LDFLAGS
+# https://formulae.brew.sh/formula/llvm@17
+export LDFLAGS="${LDFLAGS} -L$HOMEBREW_PREFIX/opt/llvm@17/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm@17/lib/c++"
